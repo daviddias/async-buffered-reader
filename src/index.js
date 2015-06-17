@@ -8,6 +8,8 @@ function read (stream, size, cb) {
     if (chunk) {
       return cb(chunk)
     }
-    stream.once('readable', setImmediate(tryRead))
+    stream.once('readable', function () {
+      setImmediate(tryRead)
+    })
   }
 }
